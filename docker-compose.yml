@@ -1,0 +1,28 @@
+  version: '3.8'
+
+  services:
+    postgres:
+      image: postgres:15-alpine
+      container_name: test_task_db
+      restart: unless-stopped
+      env_file:
+        - .env.development
+      environment:
+        POSTGRES_DB: ${DATABASE_NAME:-test_task_db}
+        POSTGRES_USER: ${DATABASE_USERNAME:-postgres}
+        POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+      ports:
+        - "${DATABASE_PORT:-5433}:5432"
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+        - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      networks:
+        - test_task_network
+
+  volumes:
+    postgres_data:
+      driver: local
+
+  networks:
+    test_task_network:
+      driver: bridge
