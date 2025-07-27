@@ -21,7 +21,6 @@ export class CatalogsController {
     type: [CatalogDomDto],
   })
   @ApiResponse({
-    status: 500,
     description: 'Internal server error occurred while fetching catalogs',
     schema: {
       properties: {

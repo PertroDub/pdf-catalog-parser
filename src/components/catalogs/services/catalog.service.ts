@@ -1,11 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Catalog } from '@entities';
-import { PAGE_LOAD_STRATEGY, CATALOG_URL, CATALOG_SELECTORS } from '@constants';
 import * as puppeteer from 'puppeteer';
 import * as pdfParse from 'pdf-parse';
 import axios from 'axios';
+import { Repository } from 'typeorm';
+import { Catalog } from '@entities';
+import { PAGE_LOAD_STRATEGY, CATALOG_URL, CATALOG_SELECTORS } from '@constants';
 import { CatalogDOMData, CatalogParseResult } from '@interfaces';
 import { CatalogParsedDto, CatalogDomDto } from '@dtos';
 
